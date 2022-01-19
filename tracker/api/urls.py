@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from rest_framework.authtoken import views as auth_views
 
 urlpatterns = [
     # path('expenses/add/', views.ExpenseCRUDView.as_view(), name='expense_add'),
@@ -23,6 +24,11 @@ urlpatterns = [
     path('category/add/', views.CategoryCreateView.as_view(), name='category_create'),
     path('category/<pk>/', views.CategoryReadView.as_view(), name='category_read'),
     path('category/update/<pk>/', views.CategoryUpdateView.as_view(), name='category_update'),
-    path('category/delete/<pk>/', views.CategoryDeleteView.as_view(), name='category_delete')
+    path('category/delete/<pk>/', views.CategoryDeleteView.as_view(), name='category_delete'),
+
+
+    # Get auth token
+
+    path('get_token/', auth_views.obtain_auth_token),
 ]
 app_name = 'tracker'
