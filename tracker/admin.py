@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Expense, Category
+from .models import Expense, Category, User
+
+admin.site.register(User)
 
 
 @admin.register(Expense)
@@ -12,4 +14,3 @@ class ExpensesAdmin(admin.ModelAdmin):
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name']
-

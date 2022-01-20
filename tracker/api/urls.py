@@ -26,9 +26,8 @@ urlpatterns = [
     path('category/update/<pk>/', views.CategoryUpdateView.as_view(), name='category_update'),
     path('category/delete/<pk>/', views.CategoryDeleteView.as_view(), name='category_delete'),
 
-
     # Get auth token
 
-    path('get_token/', auth_views.obtain_auth_token),
+    path('get_token/', views.CustomAuthToken.as_view()),
 ]
 app_name = 'tracker'
