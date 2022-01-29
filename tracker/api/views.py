@@ -4,11 +4,14 @@ from rest_framework.authtoken.models import Token
 from rest_framework.permissions import AllowAny
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
-from .serializers import UserSerializer, ExpenseSerializer, CategorySerializer, AuthTokenSerializer
+from .serializers import UserSerializer, ExpenseSerializer, CategorySerializer, AuthTokenSerializer, \
+    LogoutTokenSerializer
 from rest_framework.authentication import BasicAuthentication
 
 
 class CustomAuthToken(ObtainAuthToken):
+    permission_classes = (AllowAny,)
+
     def __init__(self):
         super().__init__()
         self.serializer_class = AuthTokenSerializer
@@ -30,6 +33,11 @@ class UserCreateView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (AllowAny,)
+
+
+class UserLogout(generics.DestroyAPIView):
+    queryset = Token.objects.all()
+    serializer_class = LogoutTokenSerializer
 
 
 class UserGetView(generics.RetrieveAPIView):

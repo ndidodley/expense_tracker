@@ -9,6 +9,8 @@ urlpatterns = [
     # path('expenses/', views.ExpenseListView.as_view(), name='expense_list'),
     # path('expenses/<pk>/', views.ExpenseCRUDView.as_view(), name='expense_detail'),
     path('account/register/', views.UserCreateView.as_view(), name='register_user'),
+    path('user/login/', views.CustomAuthToken.as_view(), name='user_login'),
+    path('user/logout/<pk>/', views.UserLogout.as_view(), name='user_logout'),
 
     # Expense endpoints
 
@@ -28,6 +30,5 @@ urlpatterns = [
 
     # Get auth token
 
-    path('get_token/', views.CustomAuthToken.as_view()),
 ]
 app_name = 'tracker'

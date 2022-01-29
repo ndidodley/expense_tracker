@@ -1,8 +1,8 @@
 from rest_framework import serializers
 from ..models import Expense, Category, User
 from django.contrib.auth import authenticate
+from rest_framework.authtoken.models import Token
 from django.utils.translation import gettext_lazy as _
-
 from rest_framework import serializers
 
 
@@ -68,3 +68,9 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ['id', 'name', 'description']
+
+
+class LogoutTokenSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Token
+        fields = ['key']
